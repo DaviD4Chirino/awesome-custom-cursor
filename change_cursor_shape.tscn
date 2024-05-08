@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8jhovekm33r7"]
+
+[ext_resource type="Script" path="res://change_cursor_shape.gd" id="1_tbpln"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdib0"]
+size = Vector2(500, 500)
+
+[node name="ChangeCursorShape" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_tbpln")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_kdib0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

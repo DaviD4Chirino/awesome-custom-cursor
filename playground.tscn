@@ -1,12 +1,34 @@
-[gd_scene load_steps=2 format=3 uid="uid://dgwyln7qniq3p"]
+[gd_scene load_steps=5 format=3 uid="uid://dgwyln7qniq3p"]
 
 [ext_resource type="Script" path="res://playground.gd" id="1_wj3ar"]
+[ext_resource type="Texture2D" uid="uid://cnwlh5uknwep6" path="res://screen_shot.png" id="2_sn1sw"]
+[ext_resource type="PackedScene" uid="uid://brhmsay3hglhm" path="res://player.tscn" id="3_myp7n"]
+[ext_resource type="PackedScene" uid="uid://c8jhovekm33r7" path="res://change_cursor_shape.tscn" id="4_wswut"]
 
 [node name="playground" type="Node2D"]
 script = ExtResource("1_wj3ar")
 
-[node name="Button" type="Button" parent="."]
-offset_right = 196.0
-offset_bottom = 62.0
-mouse_default_cursor_shape = 2
-text = "Pointer"
+[node name="ScreenShot" type="Sprite2D" parent="."]
+position = Vector2(585, -464)
+texture = ExtResource("2_sn1sw")
+
+[node name="Player" parent="." instance=ExtResource("3_myp7n")]
+position = Vector2(534, 508)
+speed = 500.0
+
+[node name="ChangeCursorShape" parent="." instance=ExtResource("4_wswut")]
+position = Vector2(266, 1312)
+cursor_shape = 18
+
+[node name="ChangeCursorShape2" parent="." instance=ExtResource("4_wswut")]
+position = Vector2(306, 791)
+scale = Vector2(0.53, 0.53)
+cursor_shape = 15
+
+[node name="ChangeCursorShape3" parent="." instance=ExtResource("4_wswut")]
+position = Vector2(-164, 796)
+cursor_shape = 12
+
+[node name="ChangeCursorShape4" parent="." instance=ExtResource("4_wswut")]
+position = Vector2(1347, 807)
+cursor_shape = 7

@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://generate_background.gd" id="1_vqph6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gi8ve"]
-line_spacing = 150.0
-font_size = 120
-outline_size = 50
+line_spacing = 1800.0
+font_size = 1200
+outline_size = 1000
 outline_color = Color(0, 0, 0, 1)
 
 [node name="Control" type="Control"]
@@ -15,7 +15,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="GridContainer" type="GridContainer" parent="."]
 modulate = Color(1, 1, 1, 0.603922)
@@ -29,9 +28,9 @@ offset_left = 70.0
 offset_right = -70.0
 grow_horizontal = 2
 grow_vertical = 2
-columns = 10
+columns = 100
 script = ExtResource("1_vqph6")
-items = 100
+items = 15000
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="."]

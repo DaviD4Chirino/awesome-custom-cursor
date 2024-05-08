@@ -205,6 +205,5 @@ sprite = NodePath("Sprite")
 z_index = 99
 z_as_relative = false
 sprite_frames = SubResource("SpriteFrames_it6wn")
-animation = &"zoom_reset"
+animation = &"busy"
 autoplay = "arrow"
-frame_progress = 0.102109

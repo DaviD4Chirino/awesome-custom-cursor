@@ -15,7 +15,7 @@ func generate() -> void:
 		child.queue_free()
 	for item in items:
 		var texture_rect = TextureRect.new()
-		texture_rect.custom_minimum_size = Vector2(100, 100)
+		texture_rect.custom_minimum_size = Vector2(500, 500)
 		texture_rect.texture = load(cursors.pick_random())
 		add_child(texture_rect)
 
