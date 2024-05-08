@@ -8,6 +8,7 @@
 
 * A ready to use cursor with animation support
 * An easy way to change the shape of the cursor
+
 ![alt text](N9pczYSwmM.gif)
 
 ## Use cases
@@ -71,6 +72,7 @@ Cursor.shape = Cursor.Shapes.CURSOR_BUSY
 ```
 
 And it gives:
+
 ![Example of the cursor turning busy](Godot_v4.2.2-stable_mono_win64_Pg6szGqEFg.gif)
 
 ### Sprites and Animations
