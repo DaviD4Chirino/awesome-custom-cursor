@@ -199,7 +199,6 @@ animations = [{
 
 [node name="Cursor" type="Node2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_7wdif")
-shape = 20
 sprite = NodePath("Sprite")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
@@ -208,4 +207,4 @@ z_as_relative = false
 sprite_frames = SubResource("SpriteFrames_it6wn")
 animation = &"zoom_reset"
 autoplay = "arrow"
-frame_progress = 0.0207064
+frame_progress = 0.102109

@@ -18,6 +18,14 @@ config/icon="res://icon.svg"
 
 Cursor="*res://addons/awesome_custom_cursor/Autoloads/Cursor.tscn"
 
+[display]
+
+window/size/viewport_width=1000
+window/size/viewport_height=1000
+window/size/window_width_override=500
+window/size/window_height_override=500
+window/stretch/mode="viewport"
+
 [dotnet]
 
 project/assembly_name="Awesome Godot Plugin Template"
@@ -25,6 +33,10 @@ project/assembly_name="Awesome Godot Plugin Template"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/awesome_custom_cursor/plugin.cfg", "res://addons/filesystem_drawer/plugin.cfg")
+
+[gui]
+
+theme/custom_font="res://Kenney Thick.ttf"
 
 [input]
 
@@ -54,3 +66,4 @@ right={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0, 0.286492, 0.70738, 1)

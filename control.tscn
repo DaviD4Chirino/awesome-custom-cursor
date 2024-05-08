@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://dprh65psnty0a"]
+
+[ext_resource type="Script" path="res://generate_background.gd" id="1_vqph6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gi8ve"]
+line_spacing = 150.0
+font_size = 120
+outline_size = 50
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="GridContainer" type="GridContainer" parent="."]
+modulate = Color(1, 1, 1, 0.603922)
+self_modulate = Color(1, 1, 1, 0.286275)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.07
+anchor_right = 1.07
+anchor_bottom = 1.0
+offset_left = 70.0
+offset_right = -70.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 10
+script = ExtResource("1_vqph6")
+items = 100
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Awesome
+Custom
+Cursor"
+label_settings = SubResource("LabelSettings_gi8ve")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

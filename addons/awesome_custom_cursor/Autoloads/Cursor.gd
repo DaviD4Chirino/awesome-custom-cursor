@@ -1,4 +1,3 @@
-@tool
 extends Node2D
 # You can set a custom cursor in engine, and add the different shapes programmatically.
 # This is a animated sprite that follows the mouse, 

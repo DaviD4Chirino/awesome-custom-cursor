@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://d1b8huyk1nccb" path="res://icon.svg" id="3_vkf8e"]
 
 [node name="UpdateButton" type="Button"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -30,7 +29,7 @@ anchor_right = 0.5
 offset_left = -142.0
 offset_top = 8.0
 offset_right = 142.0
-offset_bottom = 201.0
+offset_bottom = 206.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
