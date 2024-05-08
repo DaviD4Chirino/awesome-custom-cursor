@@ -1,3 +1,4 @@
+@tool
 extends Node2D
 # You can set a custom cursor in engine, and add the different shapes programmatically.
 # This is a animated sprite that follows the mouse, 
@@ -12,6 +13,7 @@ enum Shapes {
 	CURSOR_WAIT,
 	CURSOR_BUSY,
 	CURSOR_DRAG,
+	CURSOR_DRAGGING,
 	CURSOR_CAN_DROP,
 	CURSOR_FORBIDDEN,
 	CURSOR_VSIZE,
@@ -22,6 +24,9 @@ enum Shapes {
 	CURSOR_HSPLIT,
 	CURSOR_VSPLIT,
 	CURSOR_HELP,
+	CURSOR_ZOOM_IN,
+	CURSOR_ZOOM_OUT,
+	CURSOR_ZOOM_RESET
 }
 
 ## Instead of the Input function, use this as it only shows the sprite and never the cursor
@@ -37,6 +42,7 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
 func _process(_delta: float):
+	if Engine.is_editor_hint(): return
 	sprite.global_position = get_global_mouse_position()
 
 	# This was so the control nodes have an easier time changing the shape of the cursor
@@ -63,6 +69,7 @@ func set_shape(value: Shapes) -> void:
 
 	if has_animation:
 		sprite.play(anim_name)
+		sprite.centered = should_center()
 		return
 	else:
 		push_warning("Animation %s does not exist" % anim_name)
@@ -86,4 +93,10 @@ func set_mouse_mode(value: Input.MouseMode) -> void:
 		mouse_mode == Input.MOUSE_MODE_VISIBLE||
 		mouse_mode == Input.MOUSE_MODE_CONFINED
 	)
-	
+
+func should_center() -> bool:
+	match shape:
+		Shapes.CURSOR_ARROW, Shapes.CURSOR_POINTING_HAND, Shapes.CURSOR_ARROW:
+			return false
+
+	return true
