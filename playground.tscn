@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgwyln7qniq3p"]
+
+[ext_resource type="Script" path="res://playground.gd" id="1_wj3ar"]
+
+[node name="playground" type="Node2D"]
+script = ExtResource("1_wj3ar")
+
+[node name="Button" type="Button" parent="."]
+offset_right = 196.0
+offset_bottom = 62.0
+mouse_default_cursor_shape = 2
+text = "Pointer"

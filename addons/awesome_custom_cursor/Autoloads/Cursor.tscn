@@ -1,12 +1,35 @@
-[gd_scene load_steps=3 format=3 uid="uid://djwpw33d4d8u7"]
+[gd_scene load_steps=5 format=3 uid="uid://djwpw33d4d8u7"]
 
 [ext_resource type="Script" path="res://addons/awesome_custom_cursor/Autoloads/Cursor.gd" id="1_7wdif"]
+[ext_resource type="Texture2D" uid="uid://da8s6m5a5tw8u" path="res://addons/awesome_custom_cursor/assets/Double/pointer_c.png" id="2_rv3rr"]
+[ext_resource type="Texture2D" uid="uid://b4vahjif8gdpi" path="res://addons/awesome_custom_cursor/assets/Double/hand_small_point.png" id="3_33d60"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_it6wn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rv3rr")
+}],
+"loop": true,
+"name": &"arrow",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_33d60")
+}],
+"loop": true,
+"name": &"pointing_hand",
+"speed": 5.0
+}]
 
 [node name="Cursor" type="Node2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_7wdif")
 sprite = NodePath("Sprite")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
+z_index = 99
+z_as_relative = false
 sprite_frames = SubResource("SpriteFrames_it6wn")
+animation = &"arrow"
+centered = false

@@ -4,7 +4,7 @@ extends Node2D
 # the benefit is that this can be animated
 
 ## Done like this so we can iterate over them
-enum CursorShapes {
+enum Shapes {
 	CURSOR_ARROW,
 	CURSOR_IBEAM,
 	CURSOR_POINTING_HAND,
@@ -24,29 +24,39 @@ enum CursorShapes {
 	CURSOR_HELP,
 }
 
+## Instead of the Input function, use this as it only shows the sprite and never the cursor
 @export var mouse_mode: Input.MouseMode: set = set_mouse_mode
-@export var shape: CursorShapes: set = set_shape
+@export var shape: Shapes = Shapes.CURSOR_ARROW: set = set_shape
 
 @export var sprite: AnimatedSprite2D
+
+var previous_mouse_shape: Input.CursorShape
 
 func _ready():
 	if Engine.is_editor_hint(): return
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
 func _process(_delta: float):
-	if Engine.is_editor_hint(): return
-	sprite.position = get_viewport().get_mouse_position()
+	sprite.global_position = get_global_mouse_position()
+
+	# This was so the control nodes have an easier time changing the shape of the cursor
+	# var current_mouse_shape: Input.CursorShape = Input.get_current_cursor_shape()
+	# if shape != current_mouse_shape:
+	# 	shape = current_mouse_shape as Shapes
 
 ## Gets the CursorShape in a formatted string without the prefix CURSOR_. Mainly used for changing animations
-func get_shape_name() -> String:
-	return CursorShapes.keys()[shape].to_lower().trim_prefix("cursor_")
+func get_shape_name() -> StringName:
+	return Shapes.keys()[shape].to_lower().trim_prefix("cursor_")
 
-func set_shape(value: CursorShapes) -> void:
-
+func set_shape(value: Shapes) -> void:
 	if !sprite: return
 
 	shape = value
-	var anim_name: String = get_shape_name()
+
+	if shape <= - 1:
+		shape = Shapes.CURSOR_ARROW
+
+	var anim_name: StringName = get_shape_name()
 	var sprite_frames: SpriteFrames = sprite.sprite_frames
 
 	var has_animation: bool = sprite_frames.has_animation(anim_name)
