@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://djwpw33d4d8u7"]
+
+[ext_resource type="Script" path="res://addons/awesome_custom_cursor/Autoloads/Cursor.gd" id="1_7wdif"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_it6wn"]
+
+[node name="Cursor" type="Node2D" node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_7wdif")
+sprite = NodePath("Sprite")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_it6wn")
