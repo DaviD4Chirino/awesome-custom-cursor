@@ -3,4 +3,4 @@
 /**        export-ignore
 /addons    !export-ignore
 # Change this to the name of you addon to only export that folder 
-/addons/** !export-ignore
+/addons/awesome_custom_cursor** !export-ignore

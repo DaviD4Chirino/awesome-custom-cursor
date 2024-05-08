@@ -10,9 +10,10 @@ config_version=5
 
 [application]
 
-config/name="Awesome Godot Plugin Template"
+config/name="Awesome Custom Cursor"
+config/version="1.0.0"
 config/features=PackedStringArray("4.2")
-config/icon="res://icon.svg"
+config/icon="res://addons/awesome_custom_cursor/plugin_icon.png"
 
 [autoload]
 
