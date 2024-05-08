@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyjaccwiosvwq"]
+
+[ext_resource type="Script" path="res://addons/awesome_scene_manager/editor/update_button.gd" id="1_n2nq1"]
+[ext_resource type="PackedScene" uid="uid://bsl6du60suv5q" path="res://addons/awesome_scene_manager/editor/download_update.tscn" id="2_f5yit"]
+
+[node name="UpdateButton" type="Button" node_paths=PackedStringArray("http_request", "download_dialog", "update_failed_dialog", "download_update_panel")]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Awesome Input Icons v1.1.2 available"
+script = ExtResource("1_n2nq1")
+RELEASES_URL = "https://api.github.com/repos/DaviD4Chirino/Awesome-Scene-Manager/releases"
+LOCAL_CONFIG_PATH = "res://addons/awesome_scene_manager/plugin.cfg"
+addon_name = "awesome_scene_manager"
+addon_title = "Awesome Scene Manager"
+http_request = NodePath("HTTPRequest")
+download_dialog = NodePath("DownloadDialog")
+update_failed_dialog = NodePath("UpdateFailedDialog")
+download_update_panel = NodePath("DownloadDialog/DownloadUpdate")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="DownloadDialog" type="AcceptDialog" parent="."]
+title = ""
+size = Vector2i(300, 250)
+ok_button_text = "Close"
+
+[node name="DownloadUpdate" parent="DownloadDialog" instance=ExtResource("2_f5yit")]
+offset_left = -142.0
+offset_top = 8.0
+offset_right = 142.0
+offset_bottom = 201.0
+addon_name = "awesome_scene_manager"
+
+[node name="UpdateFailedDialog" type="AcceptDialog" parent="."]
+position = Vector2i(0, 36)
+size = Vector2i(151, 100)
+dialog_text = "The update failed"
+
+[node name="UpdateSuccess" type="AcceptDialog" parent="."]
+title = ""
+position = Vector2i(0, 36)
+size = Vector2i(215, 100)
+ok_button_text = "Accept"
+dialog_text = "All the files are up to date"
+
+[node name="Timer" type="Timer" parent="."]

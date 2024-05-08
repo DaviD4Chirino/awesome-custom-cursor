@@ -17,6 +17,7 @@ config/icon="res://addons/awesome_custom_cursor/plugin_icon.png"
 
 [autoload]
 
+SceneManager="*res://addons/awesome_scene_manager/autoloads/SceneManager.tscn"
 Cursor="*res://addons/awesome_custom_cursor/Autoloads/Cursor.tscn"
 
 [display]
@@ -33,7 +34,7 @@ project/assembly_name="Awesome Godot Plugin Template"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/awesome_custom_cursor/plugin.cfg", "res://addons/filesystem_drawer/plugin.cfg")
+enabled=PackedStringArray("res://addons/awesome_custom_cursor/plugin.cfg", "res://addons/awesome_input_icons/plugin.cfg", "res://addons/awesome_scene_manager/plugin.cfg", "res://addons/filesystem_drawer/plugin.cfg")
 
 [gui]
 

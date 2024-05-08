@@ -1,0 +1,63 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsl6du60suv5q"]
+
+[ext_resource type="Script" path="res://addons/awesome_scene_manager/editor/download_update.gd" id="1_iatpf"]
+[ext_resource type="Texture2D" uid="uid://671dgkmms71u" path="res://addons/awesome_scene_manager/plugin_icon_800x800.png" id="2_er6hc"]
+
+[node name="DownloadUpdate" type="Control" node_paths=PackedStringArray("http_request", "label", "download_button", "release_notes_button")]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_iatpf")
+http_request = NodePath("HTTPRequest")
+label = NodePath("VBoxContainer/Version")
+download_button = NodePath("VBoxContainer/CenterContainer/DownloadButton")
+release_notes_button = NodePath("VBoxContainer/CenterContainer2/LinkButton")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -54.5
+offset_right = 54.5
+offset_bottom = 171.0
+grow_horizontal = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(50, 100)
+layout_mode = 2
+texture = ExtResource("2_er6hc")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Version" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "v1.2.3 available for download"
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="DownloadButton" type="Button" parent="VBoxContainer/CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Download and install update"
+
+[node name="CenterContainer2" type="CenterContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="VBoxContainer/CenterContainer2"]
+layout_mode = 2
+text = "Read release notes..."
+uri = "https://github.com/DaviD4Chirino/Awesome-Input-Icons/releases"
+
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/DownloadButton" to="." method="_on_download_button_pressed"]
