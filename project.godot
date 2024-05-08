@@ -20,7 +20,7 @@ project/assembly_name="Awesome Godot Plugin Template"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/nv.file_system/plugin.cfg")
+enabled=PackedStringArray("res://addons/awesome_custom_cursor/plugin.cfg", "res://addons/nv.file_system/plugin.cfg")
 
 [rendering]
 

@@ -1,7 +1,6 @@
 @tool
 extends EditorPlugin
-#remember to change this
-const UPDATE_BUTTON_SCENE = preload ("res://editor/update_button.tscn")
+const UPDATE_BUTTON_SCENE = preload ("res://addons/awesome_custom_cursor/editor/update_button.tscn")
 var update_button
 
 func _enter_tree():

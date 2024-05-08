@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dyjaccwiosvwq"]
 
-[ext_resource type="Script" path="res://editor/update_button.gd" id="1_n2nq1"]
-[ext_resource type="Script" path="res://editor/DownloadUpdate.gd" id="2_mpgh5"]
-[ext_resource type="Texture2D" uid="uid://d1b8huyk1nccb" path="res://icon.svg" id="3_1ww4k"]
+[ext_resource type="Script" path="res://addons/awesome_custom_cursor/editor/update_button.gd" id="1_cmy8f"]
+[ext_resource type="Script" path="res://addons/awesome_custom_cursor/editor/DownloadUpdate.gd" id="2_ay5du"]
+[ext_resource type="Texture2D" uid="uid://d1b8huyk1nccb" path="res://icon.svg" id="3_vkf8e"]
 
 [node name="UpdateButton" type="Button"]
 visible = false
@@ -12,7 +12,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Addon  v1.3.0 available"
-script = ExtResource("1_n2nq1")
+script = ExtResource("1_cmy8f")
+LOCAL_CONFIG_PATH = "res://addons/awesome_custom_cursor/plugin.cfg"
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
@@ -33,7 +34,7 @@ offset_bottom = 201.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-script = ExtResource("2_mpgh5")
+script = ExtResource("2_ay5du")
 
 [node name="HTTPRequest" type="HTTPRequest" parent="DownloadDialog/DownloadUpdate"]
 
@@ -53,7 +54,7 @@ alignment = 1
 unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 100)
 layout_mode = 2
-texture = ExtResource("3_1ww4k")
+texture = ExtResource("3_vkf8e")
 expand_mode = 3
 stretch_mode = 5
 
