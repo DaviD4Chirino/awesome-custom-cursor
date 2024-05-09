@@ -25,7 +25,7 @@ Also there´s no way for i can see to change the cursor shape in code apart from
 
 Go to asset tab in your project and search for Awesome Scene Manager and install from there.
 
-You can also get the same files from GodotAssetStore
+You can also get the same files from [GodotAssetStore](https://godotengine.org/asset-library/asset/2949)
 
 Or
 
