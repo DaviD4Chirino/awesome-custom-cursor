@@ -44,9 +44,11 @@ You would need to change the **mouse_mode** from **Cursor** instead of **Input**
 
 ### The Cursor Scene
 
-![Cursor Scene Demonstration](Godot_v4.2.2-stable_mono_win64_XJI4SnHYHz.png)
+![Cursor Scene Demonstration](Godot_v4.2.2-stable_mono_win64_goYlt5sVA7.png)
 
-As you can see the cursor scene is a simple **Node2D** with an **AnimatedSprite2D** called Sprite as his only child.
+As you can see the cursor scene is a simple **Node2D** with an **CanvasLayer** and inside theres a **AnimatedSprite2D** called **Sprite** as his only child.
+
+The canvas layer is there because some popups appears above the sprite, thats why it has the highest layer possible.
 
 The scene has two important properties, the same as **Input**; **mouse_mode** and **shape**
 

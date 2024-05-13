@@ -199,11 +199,14 @@ animations = [{
 
 [node name="Cursor" type="Node2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_7wdif")
-sprite = NodePath("Sprite")
+sprite = NodePath("CanvasLayer/Sprite")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
-z_index = 99
-z_as_relative = false
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 128
+follow_viewport_enabled = true
+
+[node name="Sprite" type="AnimatedSprite2D" parent="CanvasLayer"]
 sprite_frames = SubResource("SpriteFrames_it6wn")
-animation = &"busy"
+animation = &"zoom_reset"
 autoplay = "arrow"
+frame_progress = 0.102109
