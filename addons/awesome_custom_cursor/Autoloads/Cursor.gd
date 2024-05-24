@@ -31,11 +31,11 @@ enum Shapes {
 
 ## Instead of the Input function, use this as it only shows the sprite and never the cursor
 @export var mouse_mode: Input.MouseMode: set = set_mouse_mode
-@export var shape: Input.CursorShape = Input.CURSOR_ARROW: set = set_shape
+@export var shape: int = Input.CURSOR_ARROW: set = set_shape
 
 @export var sprite: AnimatedSprite2D
 
-@onready var previous_mouse_shape: Input.CursorShape = Input.get_current_cursor_shape()
+@onready var previous_mouse_shape: int = Input.get_current_cursor_shape()
 
 var current_animation: StringName
 var current_frame: int
@@ -54,20 +54,23 @@ func _process(_delta: float):
 		set_shape(current_mouse_shape)
 		previous_mouse_shape = current_mouse_shape
 
-	# sprite.global_position = get_global_mouse_position()
-	var sprite_frames: SpriteFrames = sprite.sprite_frames
-	var current_frame: int = sprite.frame
+	current_animation = sprite.animation
+	current_frame_texture = sprite.sprite_frames.get_frame_texture(
+			current_animation, sprite.frame
+		)
+
 	Input.set_custom_mouse_cursor(
-		sprite_frames.get_frame_texture(sprite.animation, current_frame),
+		current_frame_texture,
 		Input.get_current_cursor_shape(),
 		sprite.offset
 	)
+	# sprite.global_position = get_global_mouse_position()
 
-## Gets the CursorShape in a formatted string without the prefix CURSOR_. Mainly used for changing animations
+## Gets the CursorShape in a formatted string without the prefix CURSOR_ Mainly used for changing animations
 func get_shape_name() -> StringName:
 	return Shapes.keys()[shape].to_lower().trim_prefix("cursor_")
 
-func set_shape(value: Input.CursorShape) -> void:
+func set_shape(value: int) -> void:
 	if !sprite: return
 
 	shape = value
@@ -111,21 +114,17 @@ func get_offset() -> Vector2:
 	match shape:
 		Input.CURSOR_ARROW, Input.CURSOR_POINTING_HAND, Input.CURSOR_ARROW:
 			return Vector2.ZERO
+	if !current_frame_texture:
+		return Vector2.ZERO
 
 	return current_frame_texture.get_size() * 0.5
 
 func _on_sprite_animation_changed() -> void:
 	# print("animation")
-	current_animation = sprite.animation
+	
 	#TODO: Change the logic from process to here
 	pass # Replace with function body.
 
 func _on_sprite_frame_changed() -> void:
-	current_frame = sprite.frame
-
-	current_frame_texture = sprite.sprite_frames.get_frame_texture(
-		current_animation, current_frame
-		)
-	print("frame texutre ", current_frame_texture)
-	#TODO: Change the logic from process to here
+	
 	pass # Replace with function body.
