@@ -23,9 +23,9 @@ enum Shapes {
 	CURSOR_ZOOM_RESET
 }
 @export var mouse_mode: Input.MouseMode
-@export var cursor_shape: Shapes
+@export var cursor_shape: Input.CursorShape
 
 func _on_body_entered(body: Node2D) -> void:
-	Cursor.mouse_mode = mouse_mode
+	# Cursor.mouse_mode = mouse_mode
 	var shape = Cursor.Shapes[Shapes.keys()[cursor_shape]]
 	Cursor.shape = shape

@@ -210,3 +210,6 @@ sprite_frames = SubResource("SpriteFrames_it6wn")
 animation = &"zoom_reset"
 autoplay = "arrow"
 frame_progress = 0.102109
+
+[connection signal="animation_changed" from="CanvasLayer/Sprite" to="." method="_on_sprite_animation_changed"]
+[connection signal="frame_changed" from="CanvasLayer/Sprite" to="." method="_on_sprite_frame_changed"]
