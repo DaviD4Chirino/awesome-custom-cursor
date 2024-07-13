@@ -22,10 +22,6 @@ enum Shapes {
 	CURSOR_HSPLIT,
 	CURSOR_VSPLIT,
 	CURSOR_HELP,
-	# customs
-	# CURSOR_ZOOM_IN,
-	# CURSOR_ZOOM_OUT,
-	# CURSOR_ZOOM_RESET
 }
 
 ## Instead of the Input function, use this as it only shows the sprite and never the cursor
