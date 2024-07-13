@@ -1,29 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://dgwyln7qniq3p"]
+[gd_scene load_steps=3 format=3 uid="uid://dgwyln7qniq3p"]
 
 [ext_resource type="Script" path="res://playground.gd" id="1_wj3ar"]
+[ext_resource type="Script" path="res://Cursor test.gd" id="2_qt64b"]
 
 [node name="playground" type="Node2D"]
 script = ExtResource("1_wj3ar")
 
-[node name="Button" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
-mouse_default_cursor_shape = 1
-text = "IBeam"
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Button2" type="Button" parent="."]
-offset_left = 22.0
-offset_top = 50.0
-offset_right = 227.0
-offset_bottom = 76.0
-mouse_default_cursor_shape = 2
-text = "pointing hand
-"
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_qt64b")
 
-[node name="Button3" type="Button" parent="."]
-offset_left = 80.0
-offset_top = 112.0
-offset_right = 285.0
-offset_bottom = 138.0
-text = "arrow
-"
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = -2
+theme_override_constants/v_separation = 0

@@ -12,7 +12,6 @@ enum Shapes {
 	CURSOR_WAIT,
 	CURSOR_BUSY,
 	CURSOR_DRAG,
-	CURSOR_DRAGGING,
 	CURSOR_CAN_DROP,
 	CURSOR_FORBIDDEN,
 	CURSOR_VSIZE,
@@ -24,30 +23,25 @@ enum Shapes {
 	CURSOR_VSPLIT,
 	CURSOR_HELP,
 	# customs
-	CURSOR_ZOOM_IN,
-	CURSOR_ZOOM_OUT,
-	CURSOR_ZOOM_RESET
+	# CURSOR_ZOOM_IN,
+	# CURSOR_ZOOM_OUT,
+	# CURSOR_ZOOM_RESET
 }
 
 ## Instead of the Input function, use this as it only shows the sprite and never the cursor
-@export var mouse_mode: Input.MouseMode: set = set_mouse_mode
-@export var shape: int = Input.CURSOR_ARROW: set = set_shape
 
 @export var sprite: AnimatedSprite2D
 
 @onready var previous_mouse_shape: int = Input.get_current_cursor_shape()
 
+var shape: int = Input.CURSOR_ARROW: set = set_shape
 var current_animation: StringName
-var current_frame: int
 var current_frame_texture: Texture2D
 
 func _ready():
-	if Engine.is_editor_hint(): return
-	# Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	sprite.hide()
 
 func _process(_delta: float):
-	if Engine.is_editor_hint(): return
 	var current_mouse_shape = Input.get_current_cursor_shape()
 
 	if current_mouse_shape != previous_mouse_shape:
@@ -64,7 +58,6 @@ func _process(_delta: float):
 		Input.get_current_cursor_shape(),
 		sprite.offset
 	)
-	# sprite.global_position = get_global_mouse_position()
 
 ## Gets the CursorShape in a formatted string without the prefix CURSOR_ Mainly used for changing animations
 func get_shape_name() -> StringName:
@@ -90,41 +83,12 @@ func set_shape(value: int) -> void:
 	else:
 		push_warning("Animation %s does not exist" % anim_name)
 
-func set_mouse_mode(value: Input.MouseMode) -> void:
-	mouse_mode = value
-
-	# basically, when the cursor is hidden it hides the sprite, and it behaves like it was programmed to do.
-	# however, to prevent the original cursor to overlap the sprite; we never make the original show by filtering the ones that do
-	if (
-		mouse_mode == Input.MOUSE_MODE_CAPTURED||
-		mouse_mode == Input.MOUSE_MODE_CONFINED_HIDDEN||
-		mouse_mode == Input.MOUSE_MODE_HIDDEN
-	):
-		Input.mouse_mode = mouse_mode
-
-	if mouse_mode == Input.MOUSE_MODE_VISIBLE:
-		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
-
-	sprite.visible = (
-		mouse_mode == Input.MOUSE_MODE_VISIBLE||
-		mouse_mode == Input.MOUSE_MODE_CONFINED
-	)
-
 func get_offset() -> Vector2:
-	match shape:
-		Input.CURSOR_ARROW, Input.CURSOR_POINTING_HAND, Input.CURSOR_ARROW:
-			return Vector2.ZERO
 	if !current_frame_texture:
 		return Vector2.ZERO
 
+	match shape:
+		Input.CURSOR_ARROW, Input.CURSOR_POINTING_HAND, Input.CURSOR_ARROW:
+			return Vector2.ZERO
+
 	return current_frame_texture.get_size() * 0.5
-
-func _on_sprite_animation_changed() -> void:
-	# print("animation")
-	
-	#TODO: Change the logic from process to here
-	pass # Replace with function body.
-
-func _on_sprite_frame_changed() -> void:
-	
-	pass # Replace with function body.
