@@ -31,8 +31,8 @@ enum Shapes {
 @onready var previous_mouse_shape: int = Input.get_current_cursor_shape()
 
 var shape: int = Input.CURSOR_ARROW: set = set_shape
-var current_animation: StringName
-var current_frame_texture: Texture2D
+@onready var current_animation: StringName = sprite.animation
+@onready var current_frame_texture: Texture2D = sprite.sprite_frames.get_frame_texture(current_animation, sprite.frame)
 
 func _ready():
 	sprite.hide()

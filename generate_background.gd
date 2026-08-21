@@ -5,8 +5,8 @@ extends GridContainer
 func _ready():
 	generate()
 	await RenderingServer.frame_post_draw
-	var image = get_viewport().get_texture().get_image()
-	image.save_png("user://screen_shot.png")
+	if Engine.is_editor_hint(): return
+	take_screenshot(Vector2i(1920,1080))
 
 func generate() -> void:
 	var cursors: Array[String] = dir_contents("res://addons/awesome_custom_cursor/assets/cursors")
@@ -15,7 +15,7 @@ func generate() -> void:
 		child.queue_free()
 	for item in items:
 		var texture_rect = TextureRect.new()
-		texture_rect.custom_minimum_size = Vector2(500, 500)
+		texture_rect.custom_minimum_size = Vector2(56, 56)
 		texture_rect.texture = load(cursors.pick_random())
 		add_child(texture_rect)
 
@@ -36,3 +36,11 @@ func dir_contents(path) -> Array[String]:
 		print("An error occurred when trying to access the path.")
 	
 	return arr
+func take_screenshot(target_size: Vector2i) -> void:
+	var window: Window = get_window()
+	var original_size: Vector2i = window.size
+	window.size = target_size
+	await RenderingServer.frame_post_draw
+	var img: Image = get_viewport().get_texture().get_image()
+	img.save_png("res://screenshot2.png")
+	window.size = original_size

@@ -12,6 +12,7 @@ config_version=5
 
 config/name="Awesome Custom Cursor"
 config/version="1.0.0"
+run/main_scene="res://playground.tscn"
 config/features=PackedStringArray("4.2")
 config/icon="res://addons/awesome_custom_cursor/plugin_icon.png"
 
@@ -22,11 +23,11 @@ Cursor="*res://addons/awesome_custom_cursor/Autoloads/Cursor.tscn"
 
 [display]
 
-window/size/viewport_width=1000
-window/size/viewport_height=1000
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/size/window_width_override=500
 window/size/window_height_override=500
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 
 [dotnet]
 

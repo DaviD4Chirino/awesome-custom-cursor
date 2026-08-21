@@ -1,6 +1,10 @@
-# Normalize EOL for all files that Git considers text files.
+# Normalize EOL for text files
 * text=auto eol=lf
-/**        export-ignore
-/addons    !export-ignore
-# Change this to the name of you addon to only export that folder 
-/addons/awesome_custom_cursor** !export-ignore
+
+# By default exclude everything from git-archive
+* export-ignore
+
+# Re-include the addons folder and the desired addon
+/addons/ -export-ignore
+/addons/awesome_custom_cursor/ -export-ignore
+/addons/awesome_custom_cursor/** -export-ignore
